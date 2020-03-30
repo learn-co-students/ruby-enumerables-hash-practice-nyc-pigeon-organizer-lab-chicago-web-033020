@@ -2,8 +2,8 @@
 def nyc_pigeon_organizer(data)
   pigeon_list = {}
 
-  data.each do |color_gender_lives, attributes|
-    attributes.each do |attribute_value, pigeon_names|
+  data.each do |color_gender_lives, cgl_value|
+    cgl_value.each do |attribute_value, pigeon_names|
       pigeon_names.each do |name|
         pigeon_list[name] ||= {}
         #意思就是
@@ -13,8 +13,8 @@ def nyc_pigeon_organizer(data)
 
         pigeon_list[name][color_gender_lives] ||= []
         #意思就是
-        #if !pigeon_list[name][attribute_name]
-        #pigeon_list[name][attribute_name] = []
+        #if !pigeon_list[name][color_gender_lives]
+        #pigeon_list[name][color_gender_lives] = []
         #end
 
         pigeon_list[name][color_gender_lives].push(attribute_value.to_s)
