@@ -1,20 +1,26 @@
-#more:https://github.com/swaddell7/ruby-enumerables-hash-practice-nyc-pigeon-organizer-lab-chicago-web-033020/blob/master/nyc_pigeon_organizer.rb
+#study guide:https://medium.com/@ericlaitman/nyc-pigeon-organizer-70243d7aa9f5
 def nyc_pigeon_organizer(data)
-  result={}
-  data.each do |attribute, value|
-    value.each do |key, names|
-      names.each do |names|
-        if !result[names]
-          result[names] = {}
-        end
+  pigeon_list = {}
 
-        if !result[names][attribute]
-          result[names][attribute] = []
-        end
+  data.each do |attribute_name, attributes|
+    attributes.each do |attribute_value, pigeon_names|
+      pigeon_names.each do |name|
+        pigeon_list[name] ||= {}
+        #意思就是
+        #if !pigeon_list[name]
+        #pigeon_list[name]={}
+        #end
 
-        result[names][attribute] << key.to_s
-        end
+        pigeon_list[name][attribute_name] ||= []
+        #意思就是
+        #if !pigeon_list[name][attribute_name]
+        #pigeon_list[name][attribute_name] = []
+        #end
+
+        pigeon_list[name][attribute_name].push(attribute_value.to_s)
       end
     end
-  result
+  end
+
+  pigeon_list
 end
